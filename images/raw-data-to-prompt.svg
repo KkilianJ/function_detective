@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1090" viewBox="0 0 1600 1090" role="img" aria-labelledby="title desc">
+  <title id="title">Raw data to LLM prompt</title>
+  <desc id="desc">Black-box results are converted into a Profile, selected observations, evidence text, a structured prompt, and candidate expressions.</desc>
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#eef2f9"/>
+    </linearGradient>
+    <linearGradient id="navyGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#233a63"/><stop offset="1" stop-color="#16233f"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef2ff"/><stop offset="1" stop-color="#e3e9ff"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ecfdf5"/><stop offset="1" stop-color="#d9f7e8"/>
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff7ed"/><stop offset="1" stop-color="#ffecd6"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#1e293b" flood-opacity="0.13"/>
+    </filter>
+    <filter id="shadowSm" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#1e293b" flood-opacity="0.11"/>
+    </filter>
+    <style>
+      text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+      .box{fill:#fff;stroke:#dbe2ec;stroke-width:1.5}
+      .h1{font-size:29px;font-weight:700;fill:#0f172a;letter-spacing:-.2px}
+      .h2{font-size:19px;font-weight:700;fill:#0f172a}
+      .body{font-size:15.5px;fill:#475569}
+      .small{font-size:13.5px;fill:#64748b}
+      .mono{font-size:13.5px;font-family:Menlo,monospace;fill:#334155}
+      .white{fill:#fff}
+      .arrow{stroke:#94a3b8;stroke-width:2.5;fill:none;marker-end:url(#a)}
+      .data{stroke:#4f5fe8;stroke-width:2.5;fill:none;marker-end:url(#b)}
+    </style>
+    <marker id="a" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto"><path d="M0 0L8 3L0 6Z" fill="#94a3b8"/></marker>
+    <marker id="b" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto"><path d="M0 0L8 3L0 6Z" fill="#4f5fe8"/></marker>
+  </defs>
+  <rect width="1600" height="1090" fill="url(#bgGrad)" rx="24"/>
+  <text class="h1" x="65" y="58">Core data path: raw calls become a controlled prompt</text>
+
+  <rect class="box" x="60" y="120" width="212" height="182" rx="18" filter="url(#shadow)"/><rect x="60" y="120" width="6" height="182" rx="3" fill="#64748b"/>
+  <text class="h2" x="90" y="163">Black-box Oracle</text>
+  <text class="body" x="90" y="205"><tspan x="90">query: x or (x, y)</tspan><tspan x="90" dy="28">result: value or</tspan><tspan x="90" dy="24">exception type</tspan></text>
+  <text class="small" x="90" y="278">raw measurements</text>
+
+  <rect x="332" y="120" width="232" height="182" rx="18" fill="url(#blueGrad)" stroke="#c7d0fb" stroke-width="1.5" filter="url(#shadow)"/>
+  <text class="h2" x="357" y="163" style="fill:#3138a8">Router</text>
+  <text class="body" x="357" y="205"><tspan x="357">run independent</tspan><tspan x="357" dy="26">detectors over</tspan><tspan x="357" dy="26">raw behaviour</tspan></text>
+  <text class="small" x="357" y="278">investigate()</text>
+
+  <rect x="624" y="120" width="252" height="182" rx="18" fill="url(#greenGrad)" stroke="#a7e7c8" stroke-width="1.5" filter="url(#shadow)"/>
+  <text class="h2" x="649" y="163" style="fill:#0f7a4e">Structured Profile</text>
+  <text class="body" x="649" y="202"><tspan x="649">domain · parity · degree</tspan><tspan x="649" dy="26">growth · curvature · ODE</tspan><tspan x="649" dy="26">period · 2D structure</tspan></text>
+  <text class="small" x="649" y="278">value or UNKNOWN</text>
+
+  <rect class="box" x="936" y="92" width="252" height="138" rx="18" filter="url(#shadow)"/><rect x="936" y="92" width="6" height="138" rx="3" fill="#4f5fe8"/>
+  <text class="h2" x="961" y="133">Probe Planner</text>
+  <text class="body" x="961" y="171"><tspan x="961">choose inputs that make</tspan><tspan x="961" dy="24">Profile facts visible</tspan></text>
+  <text class="small" x="961" y="208">selected observations</text>
+
+  <rect class="box" x="936" y="258" width="252" height="138" rx="18" filter="url(#shadow)"/><rect x="936" y="258" width="6" height="138" rx="3" fill="#0f9d63"/>
+  <text class="h2" x="961" y="299">Evidence Builder</text>
+  <text class="body" x="961" y="337"><tspan x="961">write measurements and</tspan><tspan x="961" dy="24">exclusions with ranges</tspan></text>
+  <text class="small" x="961" y="374">evidence text</text>
+
+  <rect x="1248" y="120" width="252" height="232" rx="18" fill="url(#orangeGrad)" stroke="#f5cd9a" stroke-width="1.5" filter="url(#shadow)"/>
+  <text class="h2" x="1273" y="163" style="fill:#a3540a">Prompt Builder</text>
+  <text class="body" x="1273" y="202"><tspan x="1273">signature</tspan><tspan x="1273" dy="24">+ evidence</tspan><tspan x="1273" dy="24">+ observations</tspan><tspan x="1273" dy="24">+ previous feedback</tspan><tspan x="1273" dy="24">+ output contract</tspan></text>
+  <text class="small" x="1273" y="332">build_prompt()</text>
+
+  <path class="arrow" d="M272 211H327"/><path class="arrow" d="M564 211H619"/>
+  <path class="data" d="M876 176H931"/><path class="data" d="M750 302V327H931"/>
+  <path class="data" d="M1188 161H1216Q1241 161 1241 186"/>
+  <path class="data" d="M1188 327H1241"/>
+
+  <rect x="1248" y="384" width="252" height="118" rx="18" fill="url(#navyGrad)" filter="url(#shadow)"/>
+  <text class="h2 white" x="1273" y="426">LLM</text>
+  <text class="body white" x="1273" y="462" style="fill:#dce3fb">infer exact forms</text>
+  <text class="small white" x="1273" y="486" style="fill:#aebbe0">returns k expressions</text>
+  <path class="arrow" d="M1374 352V379"/>
+
+  <rect x="60" y="460" width="1092" height="54" rx="14" fill="url(#navyGrad)" filter="url(#shadowSm)"/>
+  <text class="h2 white" x="90" y="494" style="font-size:18px">Example transformation: the same function at three representation levels</text>
+
+  <rect class="box" x="60" y="548" width="345" height="430" rx="18" filter="url(#shadow)"/>
+  <text class="h2" x="88" y="591" style="font-size:18px">1 · Selected raw rows</text>
+  <text class="mono" x="88" y="638"><tspan x="88">f(-3) = 2.5649493574615367</tspan><tspan x="88" dy="29">f( 3) = 2.5649493574615367</tspan><tspan x="88" dy="29">f(10) = 4.6443908991413725</tspan><tspan x="88" dy="29">f(1000) = 13.815514557962274</tspan></text>
+  <text class="body" x="88" y="792"><tspan x="88">The rows are facts.</tspan><tspan x="88" dy="26">They are kept at full precision</tspan><tspan x="88" dy="26">and selected for information value.</tspan></text>
+  <rect x="88" y="890" width="285" height="50" rx="12" fill="url(#blueGrad)" stroke="#c7d0fb" stroke-width="1.5"/><text class="small" x="230" y="920" text-anchor="middle" style="fill:#3138a8;font-weight:600">output: observations[]</text>
+
+  <rect class="box" x="455" y="548" width="345" height="430" rx="18" filter="url(#shadow)"/>
+  <text class="h2" x="483" y="591" style="font-size:18px">2 · Structured interpretation</text>
+  <text class="mono" x="483" y="638"><tspan x="483">parity = "even"</tspan><tspan x="483" dy="29">poly_is_none = True</tspan><tspan x="483" dy="29">growth = "log"</tspan><tspan x="483" dy="29">growth_r2 = 0.99948</tspan><tspan x="483" dy="29">inflections = [2.0]</tspan></text>
+  <text class="body" x="483" y="822"><tspan x="483">The Profile drives probe selection,</tspan><tspan x="483" dy="26">verifier rules, vision triggers,</tspan><tspan x="483" dy="26">and evidence generation.</tspan></text>
+  <rect x="483" y="890" width="285" height="50" rx="12" fill="url(#greenGrad)" stroke="#a7e7c8" stroke-width="1.5"/><text class="small" x="625" y="920" text-anchor="middle" style="fill:#0f7a4e;font-weight:600">output: Profile</text>
+
+  <rect class="box" x="850" y="548" width="640" height="430" rx="18" filter="url(#shadow)"/>
+  <text class="h2" x="878" y="591" style="font-size:18px">3 · Model-facing prompt sections</text>
+  <text class="mono" x="878" y="633"><tspan x="878">NUMERICAL EVIDENCE</tspan><tspan x="878" dy="26">- f(-x) == f(x) at five symmetric pairs.</tspan><tspan x="878" dy="26">- f vs log(x) is straight with R² = 0.99948.</tspan><tspan x="878" dy="26">- f''(x) = 0 at x = 2.000000.</tspan><tspan x="878" dy="42">OBSERVATIONS</tspan><tspan x="878" dy="26">f(-3) = 2.5649493574615367</tspan><tspan x="878" dy="26">f(1000) = 13.815514557962274</tspan><tspan x="878" dy="42">TASK</tspan><tspan x="878" dy="26">Return k exact Python expressions.</tspan></text>
+  <rect x="878" y="890" width="580" height="50" rx="12" fill="url(#orangeGrad)" stroke="#f5cd9a" stroke-width="1.5"/><text class="small" x="1168" y="920" text-anchor="middle" style="fill:#a3540a;font-weight:600">output: one controlled prompt → k candidate expressions</text>
+
+  <path class="arrow" d="M405 763H450"/><path class="arrow" d="M800 763H845"/>
+  <text class="small" x="60" y="1042">Raw measurements are preserved as observations; interpretation is kept separately in Profile and evidence.</text>
+</svg>

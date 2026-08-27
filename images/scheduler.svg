@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Multi-case scheduler</title>
+  <desc id="desc">The scheduler performs one round per case, then repeatedly chooses the closest eligible unsolved case.</desc>
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#eef2f9"/>
+    </linearGradient>
+    <linearGradient id="navyGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#233a63"/><stop offset="1" stop-color="#16233f"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef2ff"/><stop offset="1" stop-color="#e3e9ff"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ecfdf5"/><stop offset="1" stop-color="#d9f7e8"/>
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff7ed"/><stop offset="1" stop-color="#ffecd6"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#1e293b" flood-opacity="0.13"/>
+    </filter>
+    <style>
+      text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+      .box{fill:#fff;stroke:#dbe2ec;stroke-width:1.5}
+      .h1{font-size:29px;font-weight:700;fill:#0f172a;letter-spacing:-.2px}
+      .h2{font-size:18px;font-weight:700;fill:#0f172a}
+      .body{font-size:15px;fill:#475569}
+      .small{font-size:13.5px;fill:#64748b}
+      .white{fill:#fff}
+      .arrow{stroke:#94a3b8;stroke-width:2.5;fill:none;marker-end:url(#a)}
+      .loop{stroke:#4f5fe8;stroke-width:2.5;stroke-dasharray:1 7;stroke-linecap:round;fill:none;marker-end:url(#b)}
+      .badge{font-size:15px;font-weight:700;fill:#fff}
+    </style>
+    <marker id="a" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto"><path d="M0 0L8 3L0 6Z" fill="#94a3b8"/></marker>
+    <marker id="b" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto"><path d="M0 0L8 3L0 6Z" fill="#4f5fe8"/></marker>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bgGrad)" rx="24"/>
+  <text class="h1" x="65" y="58">Scheduler: finish the batch before spending retries</text>
+
+  <rect class="box" x="65" y="128" width="280" height="148" rx="18" filter="url(#shadow)"/><circle cx="93" cy="156" r="14" fill="#64748b"/><text class="badge" x="93" y="161" text-anchor="middle">1</text><text class="h2" x="116" y="162" style="font-size:17px">Recon all cases</text><text class="body" x="95" y="205"><tspan x="95">Build Profile, observations,</tspan><tspan x="95" dy="25">and evidence for every box.</tspan></text>
+
+  <rect x="405" y="128" width="320" height="148" rx="18" fill="url(#blueGrad)" stroke="#c7d0fb" stroke-width="1.5" filter="url(#shadow)"/><circle cx="433" cy="156" r="14" fill="#4f5fe8"/><text class="badge" x="433" y="161" text-anchor="middle">2</text><text class="h2" x="456" y="162" style="fill:#3138a8;font-size:17px">First pass</text><text class="body" x="435" y="205"><tspan x="435">One LLM round per unsolved case.</tspan><tspan x="435" dy="25">No case receives a retry yet.</tspan></text>
+
+  <rect class="box" x="785" y="128" width="300" height="148" rx="18" filter="url(#shadow)"/><circle cx="813" cy="156" r="14" fill="#64748b"/><text class="badge" x="813" y="161" text-anchor="middle">3</text><text class="h2" x="836" y="162" style="font-size:17px">Rebuild eligible set</text><text class="body" x="815" y="203"><tspan x="815">not done</tspan><tspan x="815" dy="23">and not exhausted</tspan><tspan x="815" dy="23">and calls &lt; per-case budget</tspan></text>
+  <path class="arrow" d="M345 200H400"/><path class="arrow" d="M725 200H780"/>
+
+  <polygon points="1325,113 1518,200 1325,287 1132,200" fill="url(#navyGrad)" filter="url(#shadow)"/>
+  <text class="h2 white" x="1325" y="196" text-anchor="middle" style="font-size:18px">Eligible case?</text><text class="small white" x="1325" y="222" text-anchor="middle" style="fill:#aebbe0">yes / none</text>
+  <path class="arrow" d="M1085 200H1127"/>
+
+  <rect x="1115" y="358" width="370" height="132" rx="18" fill="url(#blueGrad)" stroke="#c7d0fb" stroke-width="1.5" filter="url(#shadow)"/><circle cx="1143" cy="386" r="14" fill="#4f5fe8"/><text class="badge" x="1143" y="391" text-anchor="middle">4</text><text class="h2" x="1166" y="392" style="fill:#3138a8;font-size:17px">Select next case</text><text class="body" x="1145" y="440">max(case.best_rate)</text><text class="small" x="1145" y="466">closest measured candidate first</text>
+  <path class="arrow" d="M1325 288V353"/><text class="small" x="1340" y="325">yes</text>
+
+  <rect class="box" x="650" y="358" width="370" height="132" rx="18" filter="url(#shadow)"/><circle cx="678" cy="386" r="14" fill="#64748b"/><text class="badge" x="678" y="391" text-anchor="middle">5</text><text class="h2" x="701" y="392" style="font-size:17px">Run one CEGIS round</text><text class="body" x="680" y="440">one LLM call + local verification</text><text class="small" x="680" y="466">result: solved or failed</text>
+  <path class="arrow" d="M1115 424H1025"/>
+
+  <rect x="185" y="358" width="370" height="132" rx="18" fill="url(#orangeGrad)" stroke="#f5cd9a" stroke-width="1.5" filter="url(#shadow)"/><circle cx="213" cy="386" r="14" fill="#d9770f"/><text class="badge" x="213" y="391" text-anchor="middle">6</text><text class="h2" x="236" y="392" style="fill:#a3540a;font-size:17px">Update case state</text><text class="body" x="215" y="436" style="fill:#7a4a12"><tspan x="215">solved → done</tspan><tspan x="215" dy="25">failed → feedback / exhausted / calls</tspan></text>
+  <path class="arrow" d="M650 424H560"/>
+  <path class="loop" d="M370 353V313H955V270"/><text class="small" x="505" y="303">after every result: recompute eligibility</text>
+
+  <rect x="1115" y="600" width="370" height="150" rx="18" fill="url(#greenGrad)" stroke="#a7e7c8" stroke-width="1.5" filter="url(#shadow)"/><text class="h2" x="1145" y="642" style="fill:#0f7a4e;font-size:18px">Final report</text><text class="body" x="1145" y="682" style="fill:#166b48"><tspan x="1145">Solved: accepted expression</tspan><tspan x="1145" dy="25">Unsolved: best expression, agreement,</tspan><tspan x="1145" dy="25">failure region, escalation history</tspan></text>
+  <path class="arrow" d="M1450 262V555Q1450 585 1420 596"/><text class="small" x="1460" y="535">none</text>
+
+  <rect class="box" x="185" y="600" width="835" height="150" rx="18" filter="url(#shadow)"/><text class="h2" x="215" y="642" style="font-size:18px">Budget behaviour</text><text class="body" x="215" y="684"><tspan x="215">Implemented: maximum LLM calls per function.</tspan><tspan x="215" dy="27">Tracked: input tokens, output tokens, estimated cost.</tspan><tspan x="215" dy="27">Not implemented: one shared token pool across all functions.</tspan></text>
+
+  <text class="small" x="185" y="810">Repeated deterministic candidates set exhausted = true, so the scheduler stops paying for the same answer.</text>
+</svg>

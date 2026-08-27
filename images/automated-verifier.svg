@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Automated verifier pipeline</title>
+  <desc id="desc">Five sequential local checks lead to acceptance or a structured feedback packet.</desc>
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#eef2f9"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef2ff"/><stop offset="1" stop-color="#e3e9ff"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ecfdf5"/><stop offset="1" stop-color="#d9f7e8"/>
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff7ed"/><stop offset="1" stop-color="#ffecd6"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#1e293b" flood-opacity="0.13"/>
+    </filter>
+    <style>
+      text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+      .box{fill:#fff;stroke:#dbe2ec;stroke-width:1.5}
+      .h1{font-size:29px;font-weight:700;fill:#0f172a;letter-spacing:-.2px}
+      .h2{font-size:18px;font-weight:700;fill:#0f172a}
+      .body{font-size:14.5px;fill:#475569}
+      .small{font-size:13.5px;fill:#b3590c;font-weight:600}
+      .arrow{stroke:#94a3b8;stroke-width:2.5;fill:none;marker-end:url(#a)}
+      .rail{stroke:#d9770f;stroke-width:2;fill:none;opacity:.55}
+      .fail{stroke:#d9770f;stroke-width:2.5;fill:none;marker-end:url(#o)}
+      .badge{font-size:15px;font-weight:700;fill:#fff}
+    </style>
+    <marker id="a" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto"><path d="M0 0L8 3L0 6Z" fill="#94a3b8"/></marker>
+    <marker id="o" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto"><path d="M0 0L8 3L0 6Z" fill="#d9770f"/></marker>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bgGrad)" rx="24"/>
+  <text class="h1" x="65" y="58">Automated Verifier: one linear path, two possible outputs</text>
+
+  <rect x="55" y="128" width="192" height="152" rx="17" fill="url(#blueGrad)" stroke="#c7d0fb" stroke-width="1.5" filter="url(#shadow)"/><text class="h2" x="80" y="172" style="fill:#3138a8;font-size:17px">Candidate set</text><text class="body" x="80" y="212"><tspan x="80">k raw expressions</tspan><tspan x="80" dy="24">from the LLM</tspan></text>
+
+  <rect class="box" x="302" y="128" width="210" height="152" rx="17" filter="url(#shadow)"/>
+  <circle cx="330" cy="156" r="14" fill="#4f5fe8"/><text class="badge" x="330" y="161" text-anchor="middle">1</text>
+  <text class="h2" x="352" y="162" style="font-size:16.5px">Safe compile</text><text class="body" x="327" y="205"><tspan x="327">single expression</tspan><tspan x="327" dy="23">restricted namespace</tspan></text><text class="small" x="327" y="260">invalid → FAIL</text>
+
+  <rect class="box" x="567" y="128" width="210" height="152" rx="17" filter="url(#shadow)"/>
+  <circle cx="595" cy="156" r="14" fill="#4f5fe8"/><text class="badge" x="595" y="161" text-anchor="middle">2</text>
+  <text class="h2" x="617" y="162" style="font-size:16.5px">Structure</text><text class="body" x="592" y="205"><tspan x="592">compare with</tspan><tspan x="592" dy="23">confirmed Profile facts</tspan></text><text class="small" x="592" y="260">conflict → FAIL</text>
+
+  <rect class="box" x="832" y="128" width="210" height="152" rx="17" filter="url(#shadow)"/>
+  <circle cx="860" cy="156" r="14" fill="#4f5fe8"/><text class="badge" x="860" y="161" text-anchor="middle">3</text>
+  <text class="h2" x="882" y="162" style="font-size:16.5px">Consistency</text><text class="body" x="857" y="205"><tspan x="857">replay prompt</tspan><tspan x="857" dy="23">observations</tspan></text><text class="small" x="857" y="260">mismatch → FAIL</text>
+
+  <rect class="box" x="1097" y="128" width="210" height="152" rx="17" filter="url(#shadow)"/>
+  <circle cx="1125" cy="156" r="14" fill="#4f5fe8"/><text class="badge" x="1125" y="161" text-anchor="middle">4</text>
+  <text class="h2" x="1147" y="162" style="font-size:16.5px">Disagreement</text><text class="body" x="1122" y="205"><tspan x="1122">probe where survivors</tspan><tspan x="1122" dy="23">differ most</tspan></text><text class="small" x="1122" y="260">wrong value → FAIL</text>
+
+  <rect class="box" x="1362" y="128" width="185" height="152" rx="17" filter="url(#shadow)"/>
+  <circle cx="1390" cy="156" r="14" fill="#0f9d63"/><text class="badge" x="1390" y="161" text-anchor="middle">5</text>
+  <text class="h2" x="1412" y="162" style="font-size:16.5px">Fresh test</text><text class="body" x="1387" y="205"><tspan x="1387">300 samples</tspan><tspan x="1387" dy="23">strict tol 1e-9</tspan></text><text class="small" x="1387" y="260">any mismatch → FAIL</text>
+
+  <path class="arrow" d="M247 205H297"/><path class="arrow" d="M512 205H562"/><path class="arrow" d="M777 205H827"/><path class="arrow" d="M1042 205H1092"/><path class="arrow" d="M1307 205H1357"/>
+
+  <rect x="1200" y="426" width="345" height="172" rx="20" fill="url(#greenGrad)" stroke="#a7e7c8" stroke-width="1.5" filter="url(#shadow)"/>
+  <circle cx="1232" cy="466" r="16" fill="#0f9d63"/><path d="M1225 466l5 5 10-10" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text class="h2" x="1256" y="472" style="fill:#0f7a4e;font-size:19px">PASS</text><text class="body" x="1230" y="514" style="fill:#166b48"><tspan x="1230">Every legal fresh point matches.</tspan><tspan x="1230" dy="28">answer = expression</tspan><tspan x="1230" dy="28">done = true</tspan></text>
+  <path class="arrow" d="M1452 283V421"/>
+
+  <path class="rail" d="M405 280V340H1370V280"/>
+  <path class="rail" d="M670 280V340M935 280V340M1200 280V340"/>
+  <path class="fail" d="M820 340V421"/>
+  <text class="small" x="600" y="325" style="fill:#94693a">any rejection enters the same feedback path</text>
+
+  <rect x="300" y="426" width="710" height="326" rx="20" fill="url(#orangeGrad)" stroke="#f5cd9a" stroke-width="1.5" filter="url(#shadow)"/>
+  <circle cx="332" cy="466" r="16" fill="#d9770f"/><path d="M326 460l12 12M338 460l-12 12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+  <text class="h2" x="356" y="472" style="fill:#a3540a;font-size:19px">FAIL → structured feedback</text>
+  <text class="body" x="335" y="515" style="fill:#7a4a12"><tspan x="335">Rejected candidate</tspan><tspan x="610">expression + exact reason</tspan></text>
+  <text class="body" x="335" y="560" style="fill:#7a4a12"><tspan x="335">Counterexample</tspan><tspan x="610">input + oracle value + candidate value</tspan></text>
+  <text class="body" x="335" y="605" style="fill:#7a4a12"><tspan x="335">Progress signal</tspan><tspan x="610">loose agreement rate + best candidate</tspan></text>
+  <text class="body" x="335" y="650" style="fill:#7a4a12"><tspan x="335">Round diagnosis</tspan><tspan x="610">common failure + residual shape</tspan></text>
+  <text class="body" x="335" y="695" style="fill:#7a4a12"><tspan x="335">Repeated reply</tspan><tspan x="610">exhausted = true → park case</tspan></text>
+
+  <rect x="470" y="790" width="500" height="58" rx="14" fill="url(#blueGrad)" stroke="#c7d0fb" stroke-width="1.5" filter="url(#shadow)"/><text class="body" x="720" y="826" text-anchor="middle" style="fill:#3138a8;font-weight:600">feedback is added to the next prompt</text>
+  <path class="arrow" d="M655 752V785"/>
+</svg>

@@ -1,0 +1,320 @@
+
+==========================================================================
+BOX-A  (1 argument(s))
+==========================================================================
+--- profile ---
+  arity               : 1
+  domain              : all probes legal
+  constant            : False
+  integer only        : False
+  accepts complex     : True
+  overflow at         : none
+  parity              : neither
+  polynomial degree   : 1
+  homogeneity         : ?
+  growth              : ?
+  f''                 : zero
+  inflections         : none
+  ODE family          : none
+  period              : none
+  black-box calls     : 2669
+
+  probe plan:
+    - constant term
+        0
+    - symmetric pairs so parity is a fact in the table, not a claim
+        1, -1, 2, -2, 3, -3
+    - fractional inputs: shows the domain is not integer-only
+        0.5, -0.5, 1.5
+    - modest magnitude check (degree already established)
+        10.0, 1000.0
+    - extra points beyond the 2 a degree-1 polynomial needs, as a cross-check
+        7, -7, 11
+  -> evidence block 307 tokens, 15 observations, 2699 free black-box calls, 0 paid calls so far
+
+==========================================================================
+BOX-B  (1 argument(s))
+==========================================================================
+--- profile ---
+  arity               : 1
+  domain              : all probes legal
+  constant            : False
+  integer only        : False
+  accepts complex     : True
+  overflow at         : 1e155
+  parity              : neither
+  polynomial degree   : 2
+  homogeneity         : ?
+  growth              : ?
+  f''                 : constant = 2
+  inflections         : none
+  ODE family          : none
+  period              : none
+  black-box calls     : 2538
+
+  probe plan:
+    - constant term
+        0
+    - symmetric pairs so parity is a fact in the table, not a claim
+        1, -1, 2, -2, 3, -3
+    - fractional inputs: shows the domain is not integer-only
+        0.5, -0.5, 1.5
+    - modest magnitude check (degree already established)
+        10.0, 1000.0
+    - extra points beyond the 3 a degree-2 polynomial needs, as a cross-check
+        7, -7, 11
+  -> evidence block 338 tokens, 15 observations, 2568 free black-box calls, 0 paid calls so far
+
+==========================================================================
+BOX-C  (1 argument(s))
+==========================================================================
+--- profile ---
+  arity               : 1
+  domain              : all probes legal
+  constant            : False
+  integer only        : False
+  accepts complex     : False
+  overflow at         : 1e155
+  parity              : even
+  polynomial degree   : not polynomial
+  homogeneity         : ?
+  growth              : log (R2=0.99948)
+  f''                 : sign-changing
+  inflections         : 2.000000
+  ODE family          : logarithmic (param 1.9991)
+  period              : none
+  black-box calls     : 2730
+
+  probe plan:
+    - constant term
+        0
+    - symmetric pairs so parity is a fact in the table, not a claim
+        1, -1, 2, -2, 3, -3
+    - fractional inputs: shows the domain is not integer-only
+        0.5, -0.5, 1.5
+    - geometric spread: growth order is only legible across decades, never across neighbouring integers
+        10.0, 1000.0, 100000.0, 10000000.0, 1000000000.0, 100000000000.0
+    - same on the negative side
+        -10.0, -10000.0, -10000000.0
+  -> evidence block 345 tokens, 19 observations, 2781 free black-box calls, 0 paid calls so far
+
+==========================================================================
+BOX-D  (1 argument(s))
+==========================================================================
+--- profile ---
+  arity               : 1
+  domain              : all probes legal
+  constant            : False
+  integer only        : False
+  accepts complex     : False
+  overflow at         : none
+  parity              : even
+  polynomial degree   : not polynomial
+  homogeneity         : ?
+  growth              : ?
+  f''                 : sign-changing
+  inflections         : 1.076874, 3.643597, 6.578334
+  ODE family          : none
+  period              : none
+  black-box calls     : 12635
+
+  probe plan:
+    - constant term
+        0
+    - symmetric pairs so parity is a fact in the table, not a claim
+        1, -1, 2, -2, 3, -3
+    - fractional inputs: shows the domain is not integer-only
+        0.5, -0.5, 1.5
+    - geometric spread: growth order is only legible across decades, never across neighbouring integers
+        10.0, 1000.0, 100000.0, 10000000.0, 1000000000.0, 100000000000.0
+    - same on the negative side
+        -10.0, -10000.0, -10000000.0
+    - points bracketing each inflection, where curvature turns over
+        0.5384, 1.0769, 1.6153, 1.8218, 3.6436, 5.4654
+  -> evidence block 331 tokens, 25 observations, 12695 free black-box calls, 0 paid calls so far
+
+==========================================================================
+BOX-E  (2 argument(s))
+==========================================================================
+--- profile ---
+  arity               : 2
+  domain              : all probes legal
+  constant            : False
+  integer only        : False
+  accepts complex     : True
+  overflow at         : 1e155
+  parity              : ?
+  polynomial degree   : ?
+  homogeneity         : ?
+  growth              : power (R2=0.99958)
+  f''                 : ?
+  inflections         : ?
+  ODE family          : ?
+  period              : ?
+  symmetric           : False
+  separable           : False
+  slice f(.,x) fixed  : degree=1  parity=neither
+  slice f(.,y) fixed  : degree=1  parity=neither
+  black-box calls     : 278
+
+  probe plan:
+    - baseline
+        (0, 0)
+    - axis sweeps: each isolates one variable's contribution
+        (1, 0), (2, 0), (3, 0), (0, 1), (0, 2), (0, 3)
+    - diagonal triple: the ratios between these give the homogeneity degree
+        (1, 1), (2, 2), (4, 4)
+    - swapped pair, so symmetry (or its absence) is visible directly
+        (2, 3), (3, 2)
+    - mixed signs and unequal magnitudes
+        (1, 2), (2, 1), (3, -2), (-2, 3)
+    - extra off-diagonal points: an interaction term was detected, so the cross structure needs more coverage
+        (2, 5), (5, 2), (4, 3), (3, 4)
+    - magnitude coverage, jointly and one variable at a time
+        (10.0, 10.0), (100.0, 100.0), (1000.0, 1000.0), (10000.0, 10000.0), (10000.0, 1.0), (1.0, 10000.0)
+  -> evidence block 275 tokens, 26 observations, 330 free black-box calls, 0 paid calls so far
+
+==========================================================================
+BOX-F  (2 argument(s))
+==========================================================================
+--- profile ---
+  arity               : 2
+  domain              : all probes legal
+  constant            : False
+  integer only        : False
+  accepts complex     : False
+  overflow at         : 1e154
+  parity              : ?
+  polynomial degree   : ?
+  homogeneity         : ?
+  growth              : ?
+  f''                 : ?
+  inflections         : ?
+  ODE family          : ?
+  period              : ?
+  symmetric           : False
+  separable           : False
+  slice f(.,x) fixed  : degree=not polynomial  ode=power(0.9990)  parity=even
+  slice f(.,y) fixed  : degree=not polynomial  ode=power(0.9997)  parity=even
+  black-box calls     : 277
+
+  probe plan:
+    - baseline
+        (0, 0)
+    - axis sweeps: each isolates one variable's contribution
+        (1, 0), (2, 0), (3, 0), (0, 1), (0, 2), (0, 3)
+    - diagonal triple: the ratios between these give the homogeneity degree
+        (1, 1), (2, 2), (4, 4)
+    - swapped pair, so symmetry (or its absence) is visible directly
+        (2, 3), (3, 2)
+    - mixed signs and unequal magnitudes
+        (1, 2), (2, 1), (3, -2), (-2, 3)
+    - extra off-diagonal points: an interaction term was detected, so the cross structure needs more coverage
+        (2, 5), (5, 2), (4, 3), (3, 4)
+    - magnitude coverage, jointly and one variable at a time
+        (10.0, 10.0), (100.0, 100.0), (1000.0, 1000.0), (10000.0, 10000.0), (10000.0, 1.0), (1.0, 10000.0)
+  -> evidence block 312 tokens, 26 observations, 329 free black-box calls, 0 paid calls so far
+
+##########################################################################
+# round-robin pass 1: one call per box
+##########################################################################
+
+  -- call 1 -> 5 candidate(s) --
+     7 - 5*x/2
+     (14 - 5*x)/2
+     7 - 5*(x**2 - x*(x - 1))/2
+     7 - 5*(x + x)/4
+     7 - 5*x + 5*x/2
+     [version]     5 candidates agree everywhere tested; taking the simplest
+     [PAC]         7 - 5*x/2
+                   agrees on all 300 stratified samples -> disagreement region under 1% with confidence 95.10%. CONFIDENT.
+
+  -- call 1 -> 5 candidate(s) --
+     x*x - 6*x + 11
+     (x - 3)**2 + 2
+     (x - 1)*(x - 5) + 6
+     ((x*x + 2)*(x*x - 6*x + 11))/(x*x + 2)
+     11*(x - 1)*(x - 2)/2 - 6*x*(x - 2) + 3*x*(x - 1)/2
+     [version]     5 candidates agree everywhere tested; taking the simplest
+     [PAC]         x*x - 6*x + 11
+                   agrees on all 300 stratified samples -> disagreement region under 1% with confidence 95.10%. CONFIDENT.
+
+  -- call 1 -> 5 candidate(s) --
+     math.log(x*x + 4)
+     math.log(x*x + 4) + 1e-20*math.sin(x*x)
+     math.log(x*x + 4) + 1e-20*(1 - math.cos(x*x))
+     math.log(x*x + 4) + 1e-20*x*x*math.exp(-x*x)
+     math.log(x*x + 4) + 1e-20*math.tanh(x*x)
+     [version]     5 candidates agree everywhere tested; taking the simplest
+     [PAC]         math.log(x*x + 4)
+                   agrees on all 300 stratified samples -> disagreement region under 1% with confidence 95.10%. CONFIDENT.
+
+  -- call 1 -> 5 candidate(s) --
+     x*math.sin(x)
+     2*x*math.sin(x/2)*math.cos(x/2)
+     math.sqrt(x*x)*math.sin(math.sqrt(x*x))
+     x*math.sin(x)*(math.sin(x)**2 + math.cos(x)**2)
+     x*(math.sin(x/2 + x/2))
+     [version]     5 candidates agree everywhere tested; taking the simplest
+     [PAC]         x*math.sin(x)
+                   agrees on all 300 stratified samples -> disagreement region under 1% with confidence 95.10%. CONFIDENT.
+
+  -- call 1 -> 1 candidate(s) --
+     x*y + 2*x - 3*y
+     [PAC]         x*y + 2*x - 3*y
+                   agrees on all 300 stratified samples -> disagreement region under 1% with confidence 95.10%. CONFIDENT.
+
+  -- call 1 -> 5 candidate(s) --
+     math.sqrt(x*x + 2*y*y + 1)
+     math.sqrt(x*x + 2*y*y + 1 + (x - math.floor(x))**2*(y - math.floor(y))**2)
+     math.sqrt(x*x + 2*y*y + 1)*math.exp((x - math.floor(x))*(y - math.floor(y)))
+     math.sqrt(x*x + 2*y*y + 1) + math.log(1 + (x - math.floor(x))**2*(y - math.floor(y))**2)
+     math.sqrt(x*x + 2*y*y + 1)/(1 + (x - math.floor(x))**2*(y - math.floor(y))**2)
+     [version]     probed f(-44.0086, 35.9548) = 67.255127388475 -> 1/5 survive
+     [PAC]         math.sqrt(x*x + 2*y*y + 1)
+                   agrees on all 300 stratified samples -> disagreement region under 1% with confidence 95.10%. CONFIDENT.
+
+
+==========================================================================
+FINAL REPORT
+==========================================================================
+
+BOX-A  SOLVED
+    def revealed_box_a(x):
+        return 7 - 5*x/2
+    ground truth (human check): -2.5 * x + 7
+    3299 free black-box calls | 1 paid calls | 0 candidates refuted
+
+BOX-B  SOLVED
+    def revealed_box_b(x):
+        return x*x - 6*x + 11
+    ground truth (human check): (x - 3) ** 2 + 2
+    3168 free black-box calls | 1 paid calls | 0 candidates refuted
+
+BOX-C  SOLVED
+    def revealed_box_c(x):
+        return math.log(x*x + 4)
+    ground truth (human check): math.log(x ** 2 + 4)
+    3381 free black-box calls | 1 paid calls | 0 candidates refuted
+
+BOX-D  SOLVED
+    def revealed_box_d(x):
+        return x*math.sin(x)
+    ground truth (human check): x * math.sin(x)
+    13295 free black-box calls | 1 paid calls | 0 candidates refuted
+
+BOX-E  SOLVED
+    def revealed_box_e(x, y):
+        return x*y + 2*x - 3*y
+    ground truth (human check): x * y + 2 * x - 3 * y
+    930 free black-box calls | 1 paid calls | 0 candidates refuted
+
+BOX-F  SOLVED
+    def revealed_box_f(x, y):
+        return math.sqrt(x*x + 2*y*y + 1)
+    ground truth (human check): math.sqrt(x ** 2 + 2 * y ** 2 + 1)
+    3330 free black-box calls | 1 paid calls | 4 candidates refuted
+
+--------------------------------------------------------------------------
+Solved 6/6
+6 LLM calls | 5834 in / 18247 out tokens | ~$0.02306

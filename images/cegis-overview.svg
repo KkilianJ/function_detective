@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="860" viewBox="0 0 1600 860" role="img" aria-labelledby="title desc">
+  <title id="title">Function Detective CEGIS structure</title>
+  <desc id="desc">An inductive synthesizer proposes expressions, an automated verifier accepts or returns feedback, and a scheduler controls cases and budgets.</desc>
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#eef2f9"/>
+    </linearGradient>
+    <linearGradient id="navyGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#233a63"/>
+      <stop offset="1" stop-color="#16233f"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef2ff"/>
+      <stop offset="1" stop-color="#e3e9ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="4" stdDeviation="7" flood-color="#1e293b" flood-opacity="0.14"/>
+    </filter>
+    <filter id="shadowSm" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#1e293b" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+      .box{fill:#fff;stroke:#dbe2ec;stroke-width:1.5}
+      .accentBlue{stroke:#4f5fe8}.accentGreen{stroke:#0f9d63}.accentOrange{stroke:#d9770f}
+      .h1{font-size:30px;font-weight:700;fill:#0f172a;letter-spacing:-.2px}
+      .h2{font-size:21px;font-weight:700;fill:#0f172a}
+      .label{font-size:14px;font-weight:700;fill:#fff;letter-spacing:.5px}
+      .body{font-size:16px;fill:#475569}
+      .small{font-size:14px;fill:#64748b}
+      .white{fill:#fff}
+      .pillText{font-size:19px;font-weight:700}
+      .arrow{stroke:#94a3b8;stroke-width:2.5;fill:none;marker-end:url(#a)}
+      .feedback{stroke:#d9770f;stroke-width:2.5;fill:none;stroke-dasharray:1 8;stroke-linecap:round;marker-end:url(#o)}
+    </style>
+    <marker id="a" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto"><path d="M0 0L8 3L0 6Z" fill="#94a3b8"/></marker>
+    <marker id="o" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto"><path d="M0 0L8 3L0 6Z" fill="#d9770f"/></marker>
+  </defs>
+
+  <rect width="1600" height="860" fill="url(#bgGrad)" rx="24"/>
+  <text class="h1" x="64" y="60">CEGIS: propose → verify → learn from counterexamples</text>
+
+  <rect x="48" y="94" width="1504" height="726" rx="26" fill="#fff" fill-opacity="0.45" stroke="#e2e8f2" stroke-width="1.5"/>
+
+  <rect x="82" y="122" width="1436" height="66" rx="18" fill="url(#navyGrad)" filter="url(#shadowSm)"/>
+  <circle cx="118" cy="155" r="15" fill="#ffffff" fill-opacity="0.14"/>
+  <text class="label white" x="108" y="161" text-anchor="middle">S</text>
+  <text class="h2 white" x="146" y="163" style="font-size:19px">Scheduler</text>
+  <text class="body white" x="320" y="163" style="fill:#cbd5f5">first pass: one call per case  →  remaining calls: closest unsolved case first  →  park exhausted cases</text>
+
+  <rect class="box" x="96" y="272" width="222" height="230" rx="18" filter="url(#shadow)"/>
+  <rect x="96" y="272" width="6" height="230" rx="3" fill="#64748b"/>
+  <text class="h2" x="128" y="317">Black-box oracle</text>
+  <text class="body" x="128" y="362"><tspan x="128">Input: x or (x, y)</tspan><tspan x="128" dy="30">Output: value or</tspan><tspan x="128" dy="25">exception type</tspan></text>
+  <text class="small" x="128" y="466">Source and name hidden</text>
+
+  <rect x="392" y="232" width="512" height="340" rx="22" fill="url(#blueGrad)" stroke="#c7d0fb" stroke-width="1.5" filter="url(#shadow)"/>
+  <text class="h2" x="422" y="277" style="fill:#3138a8">Inductive Synthesizer</text>
+  <rect class="box accentBlue" x="422" y="312" width="205" height="90" rx="14"/><text class="body" x="447" y="350" style="font-weight:600;fill:#1e293b">Router</text><text class="small" x="447" y="378">measured Profile</text>
+  <rect class="box accentBlue" x="667" y="312" width="205" height="90" rx="14"/><text class="body" x="692" y="350" style="font-weight:600;fill:#1e293b">Probe Planner</text><text class="small" x="692" y="378">observations</text>
+  <rect class="box accentBlue" x="422" y="437" width="205" height="90" rx="14"/><text class="body" x="447" y="475" style="font-weight:600;fill:#1e293b">Prompt Builder</text><text class="small" x="447" y="503">evidence + feedback</text>
+  <rect x="667" y="437" width="205" height="90" rx="14" fill="url(#navyGrad)"/><text class="body white" x="692" y="475" style="font-weight:600">LLM</text><text class="small white" x="692" y="503" style="fill:#cbd5f5">k expressions · paid</text>
+  <path class="arrow" d="M627 357H662"/><path class="arrow" d="M769 407V432"/><path class="arrow" d="M627 482H662"/>
+
+  <rect class="box" x="968" y="272" width="386" height="230" rx="18" filter="url(#shadow)"/>
+  <rect x="968" y="272" width="6" height="230" rx="3" fill="#0f9d63"/>
+  <text class="h2" x="1000" y="317" style="fill:#0f7a4e">Automated Verifier</text>
+  <text class="body" x="1000" y="358"><tspan x="1000">1  Safe compile</tspan><tspan x="1000" dy="30">2  Structural conflict</tspan><tspan x="1000" dy="30">3  Observation consistency</tspan><tspan x="1000" dy="30">4  Candidate disagreement probe</tspan><tspan x="1000" dy="30">5  300 fresh samples</tspan></text>
+
+  <rect x="1394" y="247" width="122" height="122" rx="20" fill="#ecfdf5" stroke="#0f9d63" stroke-width="1.5" filter="url(#shadowSm)"/>
+  <circle cx="1455" cy="290" r="15" fill="#0f9d63"/><path d="M1448 290l5 5 10-10" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text class="pillText" x="1455" y="332" text-anchor="middle" style="fill:#0f7a4e">PASS</text><text class="small" x="1455" y="352" text-anchor="middle">accepted</text>
+
+  <rect x="1394" y="411" width="122" height="122" rx="20" fill="#fff7ed" stroke="#d9770f" stroke-width="1.5" filter="url(#shadowSm)"/>
+  <circle cx="1455" cy="454" r="15" fill="#d9770f"/><path d="M1449 448l12 12M1461 448l-12 12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+  <text class="pillText" x="1455" y="496" text-anchor="middle" style="fill:#b3590c">FAIL</text><text class="small" x="1455" y="516" text-anchor="middle">feedback</text>
+
+  <path class="arrow" d="M318 387H388"/><path class="arrow" d="M904 387H963"/><path class="arrow" d="M1354 327H1389"/><path class="arrow" d="M1354 447H1389"/>
+
+  <rect class="box" x="572" y="652" width="622" height="88" rx="16" filter="url(#shadowSm)"/>
+  <rect x="572" y="652" width="6" height="88" rx="3" fill="#d9770f"/>
+  <text class="body" x="602" y="690" style="font-weight:600;fill:#1e293b">refuted expressions · reasons · counterexamples · agreement rate</text>
+  <text class="small" x="602" y="717">common failure + residual shape are added when available</text>
+
+  <path class="feedback" d="M1455 538V614Q1455 652 1415 652H1198"/>
+  <path class="feedback" d="M572 694H522Q482 694 482 652V532"/>
+</svg>

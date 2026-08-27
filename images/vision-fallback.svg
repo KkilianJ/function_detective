@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Vision fallback panels and triggers</title>
+  <desc id="desc">Vision triggers and the benefit of each one-variable and two-variable panel.</desc>
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#eef2f9"/>
+    </linearGradient>
+    <linearGradient id="navyGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#233a63"/><stop offset="1" stop-color="#16233f"/>
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff7ed"/><stop offset="1" stop-color="#ffecd6"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef2ff"/><stop offset="1" stop-color="#e3e9ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#1e293b" flood-opacity="0.13"/>
+    </filter>
+    <style>
+      text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+      .box{fill:#fff;stroke:#dbe2ec;stroke-width:1.5}
+      .h1{font-size:27px;font-weight:700;fill:#0f172a;letter-spacing:-.2px}
+      .h2{font-size:17px;font-weight:700;fill:#0f172a}
+      .body{font-size:15px;fill:#475569}
+      .small{font-size:13px;fill:#64748b}
+      .white{fill:#fff}
+      .line{stroke:#cbd5e1;stroke-width:2;fill:none}
+      .plot{stroke:#4f5fe8;stroke-width:2.75;fill:none;stroke-linecap:round}
+      .plot2{stroke:#d9770f;stroke-width:2.75;fill:none;stroke-linecap:round}
+    </style>
+  </defs>
+  <rect width="1600" height="1080" fill="url(#bgGrad)" rx="24"/>
+  <text class="h1" x="65" y="58">Vision fallback: trigger only when the numeric route cannot settle the family</text>
+
+  <rect x="70" y="100" width="1460" height="106" rx="18" fill="url(#orangeGrad)" stroke="#f5cd9a" stroke-width="1.5" filter="url(#shadow)"/>
+  <text class="h2" x="105" y="142" style="fill:#a3540a;font-size:19px">Attach image when --vision is enabled and:</text>
+  <text class="body" x="105" y="178" style="fill:#7a4a12">round 1 has detector conflicts   ·   round 1 establishes no family   ·   later round best_loose_rate &lt; 0.60</text>
+
+  <rect x="70" y="248" width="950" height="54" rx="14" fill="url(#navyGrad)" filter="url(#shadow)"/><text class="h2 white" x="100" y="282" style="font-size:18px">One-variable function · six panels</text>
+
+  <rect class="box" x="70" y="330" width="290" height="200" rx="16" filter="url(#shadow)"/><text class="h2" x="95" y="368" style="font-size:16px">f(x) vs x · wide</text><path class="line" d="M105 490H325M125 505V405"/><path class="plot" d="M125 478L310 415"/><text class="small" x="95" y="518">Global linear / large-scale shape</text>
+
+  <rect class="box" x="390" y="330" width="290" height="200" rx="16" filter="url(#shadow)"/><text class="h2" x="415" y="368" style="font-size:16px">f(x) vs x · near</text><path class="line" d="M425 490H645M445 505V405"/><path class="plot2" d="M445 462C475 410 500 512 530 462S585 410 630 465"/><text class="small" x="415" y="518">Oscillation / poles / origin</text>
+
+  <rect class="box" x="710" y="330" width="290" height="200" rx="16" filter="url(#shadow)"/><text class="h2" x="735" y="368" style="font-size:16px">f vs log x</text><path class="line" d="M745 490H965M765 505V405"/><path class="plot" d="M765 478L950 415"/><text class="small" x="735" y="518">Straight → logarithmic</text>
+
+  <rect class="box" x="70" y="562" width="290" height="200" rx="16" filter="url(#shadow)"/><text class="h2" x="95" y="600" style="font-size:16px">log f vs log x</text><path class="line" d="M105 722H325M125 737V637"/><path class="plot" d="M125 710L310 648"/><text class="small" x="95" y="750">Straight → power; slope = degree</text>
+
+  <rect class="box" x="390" y="562" width="290" height="200" rx="16" filter="url(#shadow)"/><text class="h2" x="415" y="600" style="font-size:16px">log f vs x</text><path class="line" d="M425 722H645M445 737V637"/><path class="plot" d="M445 710L630 648"/><text class="small" x="415" y="750">Straight → exponential</text>
+
+  <rect class="box" x="710" y="562" width="290" height="200" rx="16" filter="url(#shadow)"/><text class="h2" x="735" y="600" style="font-size:16px">Successive differences</text><path class="line" d="M745 722H965M765 737V637"/><path class="plot2" d="M765 680H950"/><text class="small" x="735" y="750">Flat → linear; repeat → oscillation</text>
+
+  <rect x="1060" y="248" width="470" height="54" rx="14" fill="url(#navyGrad)" filter="url(#shadow)"/><text class="h2 white" x="1090" y="282" style="font-size:18px">Two-variable function · four panels</text>
+
+  <rect class="box" x="1060" y="330" width="470" height="140" rx="16" filter="url(#shadow)"/><text class="h2" x="1090" y="368" style="font-size:16px">x-slices: f(x, y₀)</text><text class="body" x="1090" y="404">Isolate x; parallel curves → no interaction term</text><text class="small" x="1090" y="438">y₀ = 0, 1, 3</text>
+
+  <rect class="box" x="1060" y="490" width="470" height="140" rx="16" filter="url(#shadow)"/><text class="h2" x="1090" y="528" style="font-size:16px">y-slices: f(x₀, y)</text><text class="body" x="1090" y="564">Isolate y; parallel curves → no interaction term</text><text class="small" x="1090" y="598">x₀ = 0, 1, 3</text>
+
+  <rect class="box" x="1060" y="650" width="470" height="140" rx="16" filter="url(#shadow)"/><text class="h2" x="1090" y="688" style="font-size:16px">Diagonal log-log: f(t,t)</text><text class="body" x="1090" y="724">Straight → homogeneous; slope = degree</text><text class="small" x="1090" y="758">Joint behaviour when x and y scale together</text>
+
+  <rect class="box" x="1060" y="810" width="470" height="140" rx="16" filter="url(#shadow)"/><text class="h2" x="1090" y="848" style="font-size:16px">Diagonal semilog: f(t,t)</text><text class="body" x="1090" y="884">Straight → logarithmic along the diagonal</text><text class="small" x="1090" y="918">Complements the per-axis slices</text>
+
+  <rect x="70" y="806" width="930" height="144" rx="18" fill="url(#blueGrad)" stroke="#c7d0fb" stroke-width="1.5" filter="url(#shadow)"/><text class="h2" x="100" y="848" style="fill:#3138a8;font-size:18px">How the image is used</text><text class="body" x="100" y="886" style="fill:#2a2f8f">Image → choose the family. Numerical table → recover exact constants.</text><text class="body" x="100" y="918" style="fill:#2a2f8f">On later family-level failure, individual dead candidates are trimmed to reduce anchoring.</text>
+
+  <text class="small" x="70" y="1010">Rendering failure is non-fatal: the same round continues with text and numerical evidence only.</text>
+</svg>
